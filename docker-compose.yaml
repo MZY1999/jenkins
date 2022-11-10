@@ -36,8 +36,10 @@ services:
         privileged: true
         expose:
           - "8080"
-        volumes:
-          - "./jenkins_data:/usr/local/jenkins"
+
+        # 首次运行请不要打开此处注释
+        #volumes:
+        #  - "./jenkins_data:/usr/local/jenkins"
 
         networks:
            - jenkins-network
