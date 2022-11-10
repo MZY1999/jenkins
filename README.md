@@ -8,4 +8,8 @@
 2.打开如下配置 再次执行down/up -d
   volumes:
     - "./jenkins_data:/usr/local/jenkins"
+
+3.管理命令
+  docker compose up -d
+  docker compose down
 ```
