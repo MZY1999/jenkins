@@ -1,0 +1,16 @@
+stream {
+        
+        #log level-> debug info notice warn error crit 
+        error_log /data/logs/nginx/access_tcp.log debug;
+
+        upstream tcp_61002 {
+            hash $remote_addr consistent;
+            server 10.10.0.33:61002;
+        }
+
+        server {
+            listen 61002;
+            proxy_pass tcp_61002;
+        }
+}
+

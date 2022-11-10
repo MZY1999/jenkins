@@ -1,0 +1,45 @@
+version: "3.8"
+services:
+    nginx:
+        build:
+          context: ./app/nginx
+          dockerfile: Dockerfile
+            #args:
+            #  - NGINXV: "1.22.0"
+        image: nginx:v1.22
+        hostname: cnginx
+        container_name: "cnginx"
+        restart: always
+        privileged: true
+        expose:
+          - "80"
+
+        ports:
+            - "80:80"
+        volumes:
+          - "./nginx_logs:/data/logs"
+          - "./nginx_conf/http_vhosts:/usr/local/nginx/conf/http_vhosts"
+              
+        depends_on:
+           - "jenkins-master" # 必须先启动jenkins才能启动nginx
+
+        networks:
+           - jenkins-network
+    jenkins-master:
+        build:
+          context: ./app/jenkins
+          dockerfile: Dockerfile
+        hostname: jenkins-master
+        image: jenkins:latest
+        container_name: "jenkins-master"
+        restart: always
+        privileged: true
+        expose:
+          - "8080"
+        volumes:
+          - "./jenkins_data:/usr/local/jenkins"
+
+        networks:
+           - jenkins-network
+networks:
+    jenkins-network:
