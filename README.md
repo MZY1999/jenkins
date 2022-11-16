@@ -14,4 +14,7 @@
 4.再次执行即可
   docker compose down
   docker compose up -d
+
+5.Nginx域名绑定位置
+  jenkins/nginx_conf/http_vhosts
 ```
