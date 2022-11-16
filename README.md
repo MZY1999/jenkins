@@ -1,15 +1,17 @@
-# jenkins
-# 1 注意事项:
+# Jenkins-Master安装注意事项
 ```go
-1.容器启动后操作步骤
-  - docker cp jenkins-master:/usr/local/jenkins .
-    - 如不执行 会导致容器docker compose down后数据丢失。
-
-2.打开如下配置 再次执行down/up -d
-  volumes:
-    - "./jenkins_data:/usr/local/jenkins"
-
-3.管理命令
+1.启动容器
   docker compose up -d
+
+2.容器启动后操作步骤
+  # 如不执行 会导致容器docker compose down后数据丢失。
+  docker cp jenkins-master:/usr/local/jenkins .
+
+3.打开docker-compose.yaml中如下配置
+  volumes:
+    - "./jenkins:/usr/local/jenkins"
+
+4.再次执行即可
   docker compose down
+  docker compose up -d
 ```
