@@ -6,6 +6,8 @@ LABEL maintainer="Jesse" service="Jenkins" version="latest stable Jenkins WAR fi
 ENV JENKINS_HOME="/usr/local/jenkins"
 ENV JAVA_HOME=/usr/local/jdk-17.0.5
 ENV PATH=$JAVA_HOME/bin:$PATH
+ENV DEBIAN_FRONTEND="noninteractive"
+ENV TZ=Asia/Shanghai
 
 # Install JDK && Jenkins
 # https://download.oracle.com/java/17/archive/jdk-17.0.5_linux-x64_bin.tar.gz
@@ -14,7 +16,8 @@ WORKDIR /usr/local/
 RUN echo "1.Start installing JDK......" \
     && apt update \
     && apt upgrade -y \
-    && apt install wget font-manager -y \
+    && apt install wget font-manager  tzdata -y \
+    && ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone \
     && wget https://software-mirrors.hk.ufileos.com/java/17/archive/jdk-17.0.5_linux-x64_bin.tar.gz \
     && tar zvfx jdk-17.0.5_linux-x64_bin.tar.gz \
     && rm -rf jdk-17.0.5_linux-x64_bin.tar.gz \
