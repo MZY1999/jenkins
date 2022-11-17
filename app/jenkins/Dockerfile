@@ -19,9 +19,9 @@ RUN echo "1.Start installing JDK......" \
     && tar zvfx jdk-17.0.5_linux-x64_bin.tar.gz \
     && rm -rf jdk-17.0.5_linux-x64_bin.tar.gz \
     && echo "Start installing jenkins......" \
-    && mkdir -p ${Jenkins_Home} \
+    && mkdir -p ${JENKINS_HOME} \
     && wget https://software-mirrors.hk.ufileos.com/jenkins/war-stable/2.361.4/jenkins.war \
-    && /bin/mv jenkins.war ${Jenkins_Home} \
+    && /bin/mv jenkins.war ${JENKINS_HOME} \
     && apt remove -y wget && apt autoremove -y \ 
     && rm -rf /var/lib/apt/lists/*
 
