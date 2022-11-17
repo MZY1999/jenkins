@@ -3,7 +3,7 @@ FROM zhangluya/ubuntu:22.04
 
 LABEL maintainer="Jesse" service="Jenkins" version="latest stable Jenkins WAR file"
 
-ENV Jenkins_Home="/usr/local/jenkins"
+ENV JENKINS_HOME="/usr/local/jenkins"
 ENV JAVA_HOME=/usr/local/jdk-17.0.5
 ENV PATH=$JAVA_HOME/bin:$PATH
 

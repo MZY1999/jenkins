@@ -13,6 +13,8 @@ services:
         privileged: true
         expose:
           - "80"
+        environment:
+          - TZ=Asia/Shanghai
 
         ports:
             - "80:80"
@@ -37,6 +39,9 @@ services:
         expose:
           - "8080"
           - "50000"
+        environment:
+          - TZ=Asia/Shanghai
+            
         # 首次运行请不要打开此处注释
         #volumes:
         #  - "./jenkins:/usr/local/jenkins"

@@ -46,8 +46,8 @@ RUN yum -y install gcc \
     && make -j `cat /proc/cpuinfo|grep processor|wc -l` && make install \ 
     && cd /tmp && rm -rf nginx-${NGINXV}* \
     && rm -rf nginx_upstream_check_module \
-    && /bin/mv /usr/local/nginx/conf /tmp/conf.bak \
-    && ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
+    && /bin/mv /usr/local/nginx/conf /tmp/conf.bak
+  # && ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
 COPY ./config/conf /usr/local/nginx/conf
 COPY ./config/docker-entrypoint.sh /docker-entrypoint.sh
 RUN chmod a+x /docker-entrypoint.sh
